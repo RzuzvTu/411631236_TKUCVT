@@ -1,0 +1,18 @@
+=== 故障前 ===
+[Fri May 22 05:19:06 2026] veth0ec0df6: entered allmulticast mode
+[Fri May 22 05:19:06 2026] veth0ec0df6: entered promiscuous mode
+[Fri May 22 05:19:06 2026] eth0: renamed from vethfdbee25
+[Fri May 22 05:19:06 2026] docker0: port 2(veth0ec0df6) entered blocking state
+[Fri May 22 05:19:06 2026] docker0: port 2(veth0ec0df6) entered forwarding state
+
+=== 故障中（memory=32m + dd 200m）===
+[Fri May 22 05:19:13 2026] Memory cgroup out of memory: Killed process 6457 (dd) total-vm:2704kB, anon-rss:1024kB, file-rss:828kB, shmem-rss:0kB, UID:0 pgtables:52kB oom_score_adj:0
+
+=== 容器狀態 ===
+OOMKilled=true ExitCode=137
+
+=== 回復後（memory=256m + shm-size=220m）===
+dd: 200+0 records in / 200+0 records out
+209715200 bytes (200.0MB) copied, 0.072326 seconds, 2.7GB/s
+DONE
+OOMKilled=false ExitCode=0
